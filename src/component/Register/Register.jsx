@@ -46,7 +46,7 @@ const Register = () => {
           progress: undefined,
           theme: "light",
           });
-      
+          e.target.reset()
 
          console.log(result.user)
        })

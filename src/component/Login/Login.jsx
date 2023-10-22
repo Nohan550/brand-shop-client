@@ -12,6 +12,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 const Login = () => {
    const {logIn,googleLogin} = useContext(AuthContext)
   const location = useLocation() ;
+
+  console.log(location)
   const navigate = useNavigate() 
   const[showPass,setShowPass] =useState(false)
   const[logError,setLogerror]=useState('')
@@ -33,10 +35,9 @@ const Login = () => {
         progress: undefined,
         theme: "light",
         });
-
-     
-        console.log(result.user)
-      navigate(location?.state ? location.state : "/") 
+        e.target.reset();
+        navigate(location?.state ? location.state : '/');
+      
     })
     .catch( error => {
       setLogerror(error.message)
@@ -57,6 +58,7 @@ const Login = () => {
         progress: undefined,
         theme: "light",
         });
+        navigate(location?.state ? location.state : '/');
       console.log(result.user)
     })
     .catch( error =>{

@@ -1,0 +1,26 @@
+[
+    {    "id":1,
+        "brand_name":"Apple",
+        "brand_image":"https://i.ibb.co/zxWXqzp/sumudu-mohottige-b-Igpii04-UIg-unsplash.jpg"
+    },
+    {    "id":2,
+        "brand_name":"Samsung",
+        "brand_image":"https://i.ibb.co/3hZh0yP/boliviainteligente-s6-Z3d1p-Ra2o-unsplash.jpg"
+    },
+    {    "id":3,
+        "brand_name":"Sony",
+        "brand_image":"https://i.ibb.co/kHxxg6R/boliviainteligente-Hv4-KMUMQ4-Rw-unsplash.jpg"
+    },
+    {    "id":4,
+        "brand_name":"Google",
+        "brand_image":"https://i.ibb.co/cJB6ps7/mitchell-luo-jz4ca36o-J-M-unsplash.jpg"
+    },
+    {    "id":5,
+        "brand_name":"Intel",
+        "brand_image":"https://i.ibb.co/M527rtY/rubaitul-azad-3-Wh-Pfo-OX888-unsplash.jpg"
+    },
+    {    "id":6,
+        "brand_name":"Tesla",
+        "brand_image":"https://i.ibb.co/syKrft4/alexander-shatov-ENOc-Rp-Yw-T68-unsplash.jpg"
+    }
+]
