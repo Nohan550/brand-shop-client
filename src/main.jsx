@@ -12,6 +12,8 @@ import AuthProvider from "./component/AuthProvider/AuthProvider";
 import Add from "./component/Add/Add";
 import Private from "./component/Private/Private";
 import Cart from "./component/Cart/Cart";
+import HomePage from "./component/HomePage/HomePage";
+import BrandProducts from "./component/BrandProducts/BrandProducts";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const router = createBrowserRouter([
     element: <Main></Main>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+      {
+        path:"/",
+        element:<HomePage></HomePage>
+      },
       {
         path: "/login",
         element: <Login></Login>,
@@ -40,7 +46,13 @@ const router = createBrowserRouter([
           path:'/cart',
           element:<Private><Cart></Cart>
         </Private>
+      },
+      {
+        path:"/brands/:brand_name",
+        element:<BrandProducts></BrandProducts>,
+        loader:()=>fetch('http://localhost:8900/brands')
       }
+
     ],
   },
 ]);
