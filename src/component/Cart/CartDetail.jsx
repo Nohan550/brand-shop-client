@@ -4,10 +4,9 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 
 const CartDetail = ({ cart }) => {
-  
   const handleDelete = (_id) => {
     fetch(
-      `https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/cart/${_id}`,
+      ` https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/cart/${_id}`,
       {
         method: "DELETE",
       }
@@ -16,7 +15,6 @@ const CartDetail = ({ cart }) => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          
           Swal.fire({
             title: "Deleted",
             text: "",

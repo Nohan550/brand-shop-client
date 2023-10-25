@@ -19,7 +19,7 @@ const Update = () => {
     const updateProduct = { name, image, brand_name, type, rating, price };
 
     fetch(
-      `https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/brands/${loadedProd._id}`,
+      ` https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/brands/${loadedProd._id}`,
       {
         method: "PUT",
         headers: {

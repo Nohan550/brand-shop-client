@@ -10,7 +10,7 @@ const BrandProducts = () => {
     const brandsProducts = useLoaderData() ;
     
     useEffect(()=>{
-     const findBrand =   brandsProducts.filter(brandProduct => brandProduct.brand_name==brand_name);
+     const findBrand =   brandsProducts?.filter(brandProduct => brandProduct.brand_name==brand_name);
      setBrandProd(findBrand)
     },[brand_name,brandsProducts])
     console.log(brandProd);
