@@ -24,8 +24,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path:"/",
-        element:<HomePage></HomePage>
+        path: "/",
+        element: <HomePage></HomePage>,
       },
       {
         path: "/login",
@@ -44,28 +44,45 @@ const router = createBrowserRouter([
         ),
       },
       {
-        
-          path:'/cart',
-          element:<Private><Cart></Cart>
-        </Private>,
-        loader:()=>fetch('http://localhost:8900/cart')
+        path: "/cart",
+        element: (
+          <Private>
+            <Cart></Cart>
+          </Private>
+        ),
+        loader: () =>
+          fetch(
+            "https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/cart"
+          ),
       },
       {
-        path:"/brands/:brand_name",
-        element:<BrandProducts></BrandProducts>,
-        loader:()=>fetch('http://localhost:8900/brands')
+        path: "/brands/:brand_name",
+        element: <BrandProducts></BrandProducts>,
+        loader: () =>
+          fetch(
+            "https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/brands"
+          ),
       },
       {
-        path:"/brand/:brand_name/:name/:id",
-        element:<Private><ProDetails></ProDetails></Private>,
-        loader:({params})=>fetch(`http://localhost:8900/brands/${params.id}`)
+        path: "/brand/:brand_name/:name/:id",
+        element: (
+          <Private>
+            <ProDetails></ProDetails>
+          </Private>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/brands/${params.id}`
+          ),
       },
       {
-        path:"/update/:id",
-        element:<Update></Update>,
-        loader:({params})=>fetch(`http://localhost:8900/brands/${params.id}`)
-      }
-
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(
+            `https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/brands/${params.id}`
+          ),
+      },
     ],
   },
 ]);

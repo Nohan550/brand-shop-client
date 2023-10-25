@@ -1,10 +1,9 @@
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
-import 'sweetalert2/src/sweetalert2.scss'
+import "sweetalert2/src/sweetalert2.scss";
 
 const Add = () => {
-
-  const handleAdd = e =>{
+  const handleAdd = (e) => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.value;
@@ -15,29 +14,40 @@ const Add = () => {
     const price = form.price.value;
     const short_description = form.short_description.value;
 
-    const product ={name,image,brand_name,type,rating,price,short_description};
+    const product = {
+      name,
+      image,
+      brand_name,
+      type,
+      rating,
+      price,
+      short_description,
+    };
     // console.log(product)
-    fetch('http://localhost:8900/brands',{
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
-      },
-      body: JSON.stringify(product)
-
-    })
-    .then(res => res.json())
-    .then(data=>{console.log(data);
-    if(data.insertedId){
-      Swal.fire({
-        title: 'YAY!',
-        text: 'Product Added Successfully',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      })
-      form.reset();
-    }
-  })
-  }
+    fetch(
+      "https://brand-shop-server-5pk8g25x0-nohan550s-projects.vercel.app/brands",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "YAY!",
+            text: "Product Added Successfully",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+          form.reset();
+        }
+      });
+  };
   return (
     <div className="hero  bg-base-200">
       <div
@@ -49,13 +59,13 @@ const Add = () => {
         </div>
         <div className="card  w-full shadow-2xl bg-base-100">
           <form onSubmit={handleAdd} className="card-body ">
-            <div  className="form-control grid grid-cols-2 gap-3">
+            <div className="form-control grid grid-cols-2 gap-3">
               <div className="">
                 <label className="label">
                   <span className="label-text">Image</span>
                 </label>
                 <input
-                name="image"
+                  name="image"
                   type="text"
                   placeholder="Image URL"
                   className="input input-bordered w-full"
@@ -68,7 +78,7 @@ const Add = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
-                name="name"
+                  name="name"
                   type="text"
                   placeholder="Name"
                   className="input input-bordered w-full"
@@ -80,7 +90,7 @@ const Add = () => {
                   <span className="label-text">Brand Name</span>
                 </label>
                 <input
-                name="brand_name"
+                  name="brand_name"
                   type="text"
                   list="brands"
                   placeholder="Brand Name"
@@ -101,14 +111,14 @@ const Add = () => {
                   <span className="label-text">Type</span>
                 </label>
                 <input
-                name="type"
+                  name="type"
                   type="text"
                   list="types"
                   placeholder="Type"
                   className="input input-bordered w-full"
                   required
                 />
-                 <datalist id="types">
+                <datalist id="types">
                   <option>Phone</option>
                   <option>Computer</option>
                   <option>Headphone</option>
@@ -123,7 +133,7 @@ const Add = () => {
                   <span className="label-text">Rating</span>
                 </label>
                 <input
-                name="rating"
+                  name="rating"
                   type="text"
                   placeholder="Rating"
                   className="input input-bordered w-full"
@@ -135,7 +145,7 @@ const Add = () => {
                   <span className="label-text">Price</span>
                 </label>
                 <input
-                name="price"
+                  name="price"
                   type="text"
                   placeholder="Price"
                   className="input input-bordered w-full"
@@ -147,7 +157,7 @@ const Add = () => {
                   <span className="label-text">Short Description</span>
                 </label>
                 <input
-                name="short_description"
+                  name="short_description"
                   type="text"
                   placeholder="Short Description"
                   className="input input-bordered w-full"
