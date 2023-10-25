@@ -1,60 +1,67 @@
+import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import 'sweetalert2/src/sweetalert2.scss'
 
-const Add = () => {
+const Update = () => {
 
-  const handleAdd = e =>{
-    e.preventDefault();
-    const form = e.target;
-    const image = form.image.value;
-    const name = form.name.value;
-    const brand_name = form.brand_name.value;
-    const type = form.type.value;
-    const rating = form.rating.value;
-    const price = form.price.value;
-    const short_description = form.short_description.value;
+  const loadedProd =useLoaderData();
+  
+  
+    const handleUpdate = e =>{
 
-    const product ={name,image,brand_name,type,rating,price,short_description};
-    // console.log(product)
-    fetch('http://localhost:8900/brands',{
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
-      },
-      body: JSON.stringify(product)
-
-    })
-    .then(res => res.json())
-    .then(data=>{console.log(data);
-    if(data.insertedId){
-      Swal.fire({
-        title: 'YAY!',
-        text: 'Product Added Successfully',
-        icon: 'success',
-        confirmButtonText: 'OK'
+        e.preventDefault();
+        const form = e.target;
+        const image = form.image.value;
+        const name = form.name.value;
+        const brand_name = form.brand_name.value;
+        const type = form.type.value;
+        const rating = form.rating.value;
+        const price = form.price.value;
+        
+    
+        const updateProduct ={name,image,brand_name,type,rating,price};
+        
+        fetch(`http://localhost:8900/brands/${loadedProd._id}`,{
+          method:'PUT',
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(updateProduct)
+    
+        })
+        .then(res => res.json())
+        .then(data=>{console.log(data);
+        if(data.modifiedCount > 0){
+          Swal.fire({
+            title: 'Congratulation',
+            text: 'Product updated',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
+         
+        }
       })
-      form.reset();
-    }
-  })
-  }
-  return (
-    <div className="hero  bg-base-200">
+      }
+    return (
+        <div>
+            <div className="hero  bg-base-200">
       <div
         className="hero-content flex-col 
         "
       >
         <div className="text-center ">
-          <h1 className="text-4xl font-bold">Add Product</h1>
+          <h1 className="text-4xl font-bold">Update Product {loadedProd.name}</h1>
         </div>
         <div className="card  w-full shadow-2xl bg-base-100">
-          <form onSubmit={handleAdd} className="card-body ">
+          <form onSubmit={handleUpdate} className="card-body ">
             <div  className="form-control grid grid-cols-2 gap-3">
               <div className="">
                 <label className="label">
                   <span className="label-text">Image</span>
                 </label>
                 <input
+                defaultValue={loadedProd?.image}
                 name="image"
                   type="text"
                   placeholder="Image URL"
@@ -68,6 +75,7 @@ const Add = () => {
                   <span className="label-text">Name</span>
                 </label>
                 <input
+                 defaultValue={loadedProd?.name}
                 name="name"
                   type="text"
                   placeholder="Name"
@@ -80,6 +88,7 @@ const Add = () => {
                   <span className="label-text">Brand Name</span>
                 </label>
                 <input
+                 defaultValue={loadedProd?.brand_name}
                 name="brand_name"
                   type="text"
                   list="brands"
@@ -101,6 +110,7 @@ const Add = () => {
                   <span className="label-text">Type</span>
                 </label>
                 <input
+                 defaultValue={loadedProd?.type}
                 name="type"
                   type="text"
                   list="types"
@@ -123,6 +133,7 @@ const Add = () => {
                   <span className="label-text">Rating</span>
                 </label>
                 <input
+                 defaultValue={loadedProd?.rating}
                 name="rating"
                   type="text"
                   placeholder="Rating"
@@ -135,6 +146,7 @@ const Add = () => {
                   <span className="label-text">Price</span>
                 </label>
                 <input
+                 defaultValue={loadedProd?.price}
                 name="price"
                   type="text"
                   placeholder="Price"
@@ -142,27 +154,18 @@ const Add = () => {
                   required
                 />
               </div>
-              <div className="col-span-2">
-                <label className="label">
-                  <span className="label-text">Short Description</span>
-                </label>
-                <input
-                name="short_description"
-                  type="text"
-                  placeholder="Short Description"
-                  className="input input-bordered w-full"
-                  required
-                />
-              </div>
+             
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-blue-600 text-white">Add</button>
+              <button className="btn bg-blue-600 text-white">Submit</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-  );
+   
+        </div>
+    );
 };
 
-export default Add;
+export default Update;

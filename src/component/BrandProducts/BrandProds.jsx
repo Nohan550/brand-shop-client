@@ -25,7 +25,7 @@ const BrandProds = ({ prods }) => {
           </div>
           <div className="btn-group justify-end">
             <Link to={`/brand/${brand_name}/${name}/${_id}`}><button className="btn btn-info  text-white">Details</button></Link>
-            <Link to="/update"><button className="btn btn-warning ">Update</button></Link>
+            <Link to={`/update/${_id}`}><button className="btn btn-warning ">Update</button></Link>
             
           </div>
         </div>
