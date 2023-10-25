@@ -1,6 +1,33 @@
+import { useState } from 'react';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+import 'sweetalert2/src/sweetalert2.scss'
+
+
 const CartDetail = ({ cart }) => {
-  console.log(cart);
-  const { name, image, price ,type,short_description} = cart;
+
+  const [remCart,SetRemCart]=useState(cart)
+const handleDelete = _id =>{
+ 
+  fetch(`http://localhost:8900/cart/${_id}`,{
+    method:"DELETE"
+  }
+  
+  )
+  .then(res => res.json())
+  .then(data =>{ console.log(data)
+    if(data.deletedCount){
+      Swal.fire({
+        title: 'Deleted',
+        text: '',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
+      const remaining =
+    }
+  })
+}
+  const { name, image, price ,type,short_description,_id} = cart;
   return (
     <div className="">
       <div className="card card-side h-fit  bg-base-200 shadow-xl">
@@ -15,7 +42,9 @@ const CartDetail = ({ cart }) => {
           <h2 className="card-title text-2xl">{name}</h2>
           <p className="font-semibold text-xl">{price}</p>
           <h1 className="font-medium text-base">{short_description}</h1>
+          <button onClick={()=>handleDelete(_id)} className="btn btn-error text-white ">Delete</button>
         </div>
+      
       </div>
     </div>
   );
