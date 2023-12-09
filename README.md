@@ -1,11 +1,12 @@
 #  [Live Link ](https://brand-shop-51e11.web.app)
+---
 
 ## **Project Features**
-#  This is a fullStack website
-#  user can login,logout,toggle between theme
-#  he/she can add product,update,product
-#  can add product to cart and delete also
-# protected routes included
+### 1.This is a fullStack shopping website
+### 2.Technologies used React JS,Firebase,MondoDB,CSS,Tailwind,Express JS,
+### 3.A user can add product ,can get product according to category,add item to cart and also delete.
+### 4.Logged is user can access private routes
+### 5.Theme toggle enabled for users.
 
 
   
