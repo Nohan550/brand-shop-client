@@ -71,17 +71,13 @@ const router = createBrowserRouter([
           </Private>
         ),
         loader: ({ params }) =>
-          fetch(
-            ` https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/brands/${params.id}`
-          ),
+          fetch(` https://brand-shop-server-nine-rho.vercel.app/${params.id}`),
       },
       {
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(
-            ` https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/brands/${params.id}`
-          ),
+          fetch(` https://brand-shop-server-nine-rho.vercel.app/${params.id}`),
       },
     ],
   },
