@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 const BrandProds = ({ prods }) => {
-  const { name, image, brand_name, type, price, rating,_id } = prods;
-  console.log(prods);
+  const { name, image, brand_name, type, price, rating, _id } = prods;
+
   return (
     <div className="mx-auto">
       <div className="card w-96 bg-base-300 shadow-xl">
@@ -24,9 +24,12 @@ const BrandProds = ({ prods }) => {
             </div>
           </div>
           <div className="btn-group justify-end">
-            <Link to={`/brand/${brand_name}/${name}/${_id}`}><button className="btn btn-info  text-white">Details</button></Link>
-            <Link to={`/update/${_id}`}><button className="btn btn-warning ">Update</button></Link>
-            
+            <Link to={`/brand/${brand_name}/${name}/${_id}`}>
+              <button className="btn btn-info  text-white">Details</button>
+            </Link>
+            <Link to={`/update/${_id}`}>
+              <button className="btn btn-warning ">Update</button>
+            </Link>
           </div>
         </div>
       </div>

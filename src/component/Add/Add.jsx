@@ -23,20 +23,16 @@ const Add = () => {
       price,
       short_description,
     };
-    // console.log(product)
-    fetch(
-      " https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/brands",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(product),
-      }
-    )
+
+    fetch(" https://brand-shop-server-nine-rho.vercel.app/brands", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "YAY!",

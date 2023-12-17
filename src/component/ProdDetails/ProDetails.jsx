@@ -18,21 +18,17 @@ const ProDetails = () => {
     type,
     brand_name,
   };
-  console.log(loadProd);
+
   const handleCart = () => {
-    fetch(
-      " https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/cart",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(cart),
-      }
-    )
+    fetch("https://brand-shop-server-nine-rho.vercel.app/cart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cart),
+    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Yappy",

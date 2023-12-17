@@ -18,16 +18,18 @@ const Update = () => {
 
     const updateProduct = { name, image, brand_name, type, rating, price };
 
-    fetch(` https://brand-shop-server-nine-rho.vercel.app/${loadedProd._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateProduct),
-    })
+    fetch(
+      `https://brand-shop-server-nine-rho.vercel.app/brands/${loadedProd._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateProduct),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Congratulation",

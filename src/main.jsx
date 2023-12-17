@@ -51,17 +51,13 @@ const router = createBrowserRouter([
           </Private>
         ),
         loader: () =>
-          fetch(
-            " https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/cart"
-          ),
+          fetch("https://brand-shop-server-nine-rho.vercel.app/cart"),
       },
       {
         path: "/brands/:brand_name",
         element: <BrandProducts></BrandProducts>,
         loader: () =>
-          fetch(
-            " https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/brands"
-          ),
+          fetch("https://brand-shop-server-nine-rho.vercel.app/brands"),
       },
       {
         path: "/brand/:brand_name/:name/:id",
@@ -71,13 +67,17 @@ const router = createBrowserRouter([
           </Private>
         ),
         loader: ({ params }) =>
-          fetch(` https://brand-shop-server-nine-rho.vercel.app/${params.id}`),
+          fetch(
+            `https://brand-shop-server-nine-rho.vercel.app/brands/${params.id}`
+          ),
       },
       {
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(` https://brand-shop-server-nine-rho.vercel.app/${params.id}`),
+          fetch(
+            ` https://brand-shop-server-nine-rho.vercel.app/brands/${params.id}`
+          ),
       },
     ],
   },

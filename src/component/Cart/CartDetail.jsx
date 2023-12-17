@@ -5,15 +5,11 @@ import "sweetalert2/src/sweetalert2.scss";
 
 const CartDetail = ({ cart }) => {
   const handleDelete = (_id) => {
-    fetch(
-      ` https://brand-shop-server-9twbnvq2p-nohan550s-projects.vercel.app/cart/${_id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`https://brand-shop-server-nine-rho.vercel.app/cart/${_id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.deletedCount > 0) {
           Swal.fire({
             title: "Deleted",
@@ -21,6 +17,7 @@ const CartDetail = ({ cart }) => {
             icon: "success",
             confirmButtonText: "OK",
           });
+          location.reload()
         }
       });
   };
